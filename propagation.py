@@ -20,7 +20,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 class YOLO(object):
     def __init__(self):
 
-        self.anchors_path = path + '/yolo3/model/yolo_anchors.txt'
+        self.anchors_path = path + '/model/yolo_anchors.txt'
         self.COCO = False
         self.trainable = True
 
@@ -28,14 +28,14 @@ class YOLO(object):
         if args1=='COCO':
             print("-----------COCO-----------")
             self.COCO = True
-            self.classes_path = path + '/yolo3/model/coco_classes.txt'
+            self.classes_path = path + '/model/coco_classes.txt'
             self.trainable = False
         elif args1=='VOC':
             print("-----------VOC------------")
-            self.classes_path = path + '/yolo3/model/voc_classes.txt'
+            self.classes_path = path + '/model/voc_classes.txt'
         elif args1=='boat':
             print("-----------boat-----------")
-            self.classes_path = path + '/yolo3/model/boat_classes.txt'
+            self.classes_path = path + '/model/boat_classes.txt'
 
         # args = self.argument()
         # if args.COCO:
@@ -152,7 +152,7 @@ class YOLO(object):
         print('Found {} boxes for {}'.format(len(out_boxes), 'img'))
 
         # Visualisation#################################################################################################
-        font = ImageFont.truetype(font=path + '/yolo3/model/font/FiraMono-Medium.otf', size=np.floor(3e-2 * image.size[1] + 0.5).astype(np.int32))
+        font = ImageFont.truetype(font=path + '/model/font/FiraMono-Medium.otf', size=np.floor(3e-2 * image.size[1] + 0.5).astype(np.int32))
         thickness = (image.size[0] + image.size[1]) // 500  # do day cua BB
 
         for i, c in reversed(list(enumerate(out_classes))):
@@ -280,7 +280,7 @@ def detect_img(yolo, output=''):
     while True:
         img = input('Input image filename:')
         try:
-            img = path + '/yolo3' + str(img)
+            #img = path + '/yolo3' + str(img)
             image = Image.open(img)
         except:
             print('Open Error! Try again!')
