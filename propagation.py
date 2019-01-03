@@ -93,7 +93,7 @@ class YOLO(object):
         # detect
         boxes, scores, classes = predict(scale_total, self.anchors, len(self.class_names), self.image_shape,
                                          score_threshold=self.threshold, iou_threshold=self.ignore_thresh)
-        """
+        
         # Add ops to save and restore all the variables
         saver = tf.train.Saver(var_list=None if self.COCO==True else tf.trainable_variables())
 
@@ -106,7 +106,7 @@ class YOLO(object):
         epoch = input('Entrer a check point at epoch:')
         # For the case of COCO
         epoch = epoch if self.COCO == False else 2000
-        checkpoint = path + "/yolo3/save_model/SAVER_MODEL_boat10/model.ckpt-" + str(epoch)
+        checkpoint = path + "/model.ckpt-" + str(epoch)
         try:
             aaa = checkpoint + '.meta'
             my_abs_path = Path(aaa).resolve()
@@ -116,7 +116,7 @@ class YOLO(object):
             saver.restore(sess, checkpoint)
             print("checkpoint: ", checkpoint)
             print("already training!")
-        """
+     
         return boxes, scores, classes, sess
 
     def detect_image(self, image):
