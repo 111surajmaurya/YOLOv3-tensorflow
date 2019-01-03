@@ -103,6 +103,7 @@ class YOLO(object):
         config.gpu_options.allow_growth = True
         sess = tf.Session(config = config)
         sess.run(tf.global_variables_initializer())
+        """
         epoch = input('Entrer a check point at epoch:')
         # For the case of COCO
         epoch = epoch if self.COCO == False else 2000
@@ -116,6 +117,7 @@ class YOLO(object):
             saver.restore(sess, checkpoint)
             print("checkpoint: ", checkpoint)
             print("already training!")
+        """   
      
         return boxes, scores, classes, sess
 
