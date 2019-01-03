@@ -93,7 +93,7 @@ class YOLO(object):
         # detect
         boxes, scores, classes = predict(scale_total, self.anchors, len(self.class_names), self.image_shape,
                                          score_threshold=self.threshold, iou_threshold=self.ignore_thresh)
-
+        """
         # Add ops to save and restore all the variables
         saver = tf.train.Saver(var_list=None if self.COCO==True else tf.trainable_variables())
 
@@ -116,7 +116,7 @@ class YOLO(object):
             saver.restore(sess, checkpoint)
             print("checkpoint: ", checkpoint)
             print("already training!")
-
+        """
         return boxes, scores, classes, sess
 
     def detect_image(self, image):
