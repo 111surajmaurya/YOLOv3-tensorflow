@@ -144,11 +144,11 @@ with graph.as_default():
         # Summary Writers
         # tensorboard --logdir='./graphs/' --port 6005
         if VOC==True:
-            train_summary_writer = tf.summary.FileWriter(PATH + '/graphs/train', sess.graph)
-            validation_summary_writer = tf.summary.FileWriter(PATH + '/graphs/validation', sess.graph)
+            train_summary_writer = tf.summary.FileWriter(PATH , sess.graph)
+            validation_summary_writer = tf.summary.FileWriter(PATH , sess.graph)
         else:
-            train_summary_writer = tf.summary.FileWriter(PATH + '/graphs/train', sess.graph)
-            validation_summary_writer = tf.summary.FileWriter(PATH + '/graphs/validation', sess.graph)
+            train_summary_writer = tf.summary.FileWriter(PATH , sess.graph)
+            validation_summary_writer = tf.summary.FileWriter(PATH , sess.graph)
         # summary_writer = tf.summary.FileWriter('./graphs', sess.graph)
         sess.run(tf.global_variables_initializer())
         # If you want to continue training from check point
@@ -203,14 +203,14 @@ with graph.as_default():
             if best_loss_valid > mean_loss_valid:
                 best_loss_valid = mean_loss_valid
                 if VOC ==True:
-                    create_new_folder = PATH + "/save_model/SAVER_MODEL_VOC1"
+                    create_new_folder = PATH 
                 else:
-                    create_new_folder = PATH + "/save_model/SAVER_MODEL_boat10"
+                    create_new_folder = PATH 
                 try:
                     os.mkdir(create_new_folder)
                 except OSError:
                     pass
-                checkpoint_path = create_new_folder + "/model.ckpt"
+                checkpoint_path = "/content/gdrive/My Drive/Yolo" + "/model.ckpt"
                 saver.save(sess, checkpoint_path, global_step=epoch)
                 print("Model saved in file: %s" % checkpoint_path)
 
