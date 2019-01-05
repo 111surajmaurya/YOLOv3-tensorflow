@@ -46,11 +46,11 @@ if args.VOC == True:
     classes_data = read_classes(classes_paths)
     annotation_path_train = PATH + '/model/train.txt'
     annotation_path_valid = PATH + '/model/valid.txt'
-    # annotation_path_test = PATH + '/model/voc_test.txt'
+    annotation_path_test = PATH + '/model/test.txt'
 
-    data_path_train = PATH + '/model/voc_train.npz'
-    data_path_valid = PATH + '/model/voc_valid.npz'
-    # data_path_test = PATH + '/model/voc_test.npz'
+    data_path_train = PATH + '/model/train.npz'
+    data_path_valid = PATH + '/model/valid.npz'
+    data_path_test = PATH + '/model/test.npz'
 
 
 
