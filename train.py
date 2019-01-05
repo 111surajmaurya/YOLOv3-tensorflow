@@ -25,27 +25,27 @@ def argument():
     args = parser.parse_args()
     return args
 # Get Data #############################################################################################################
-PATH = path + '/yolo3'
-classes_paths = PATH + '/model/boat_classes.txt'
+PATH = path 
+classes_paths = PATH + '/model/classes.txt'
 classes_data = read_classes(classes_paths)
 anchors_paths = PATH + '/model/yolo_anchors.txt'
 anchors = read_anchors(anchors_paths)
 
-annotation_path_train = PATH + '/model/boat_train.txt'
-annotation_path_valid = PATH + '/model/boat_valid.txt'
-annotation_path_test = PATH + '/model/boat_test.txt'
+annotation_path_train = PATH + '/model/train.txt'
+annotation_path_valid = PATH + '/model/valid.txt'
+annotation_path_test = PATH + '/model/test.txt'
 
-data_path_train = PATH + '/model/boat_train.npz'
-data_path_valid = PATH + '/model/boat_valid.npz'
-data_path_test = PATH + '/model/boat_test.npz'
+data_path_train = PATH + '/model/train.npz'
+data_path_valid = PATH + '/model/valid.npz'
+data_path_test = PATH + '/model/test.npz'
 VOC = False
 args = argument()
 if args.VOC == True:
     VOC = True
-    classes_paths = PATH + '/model/voc_classes.txt'
+    classes_paths = PATH + '/model/classes.txt'
     classes_data = read_classes(classes_paths)
-    annotation_path_train = PATH + '/model/voc_train.txt'
-    annotation_path_valid = PATH + '/model/voc_val.txt'
+    annotation_path_train = PATH + '/model/train.txt'
+    annotation_path_valid = PATH + '/model/valid.txt'
     # annotation_path_test = PATH + '/model/voc_test.txt'
 
     data_path_train = PATH + '/model/voc_train.npz'
@@ -144,11 +144,11 @@ with graph.as_default():
         # Summary Writers
         # tensorboard --logdir='./graphs/' --port 6005
         if VOC==True:
-            train_summary_writer = tf.summary.FileWriter(PATH + '/graphs_VOC1/train', sess.graph)
-            validation_summary_writer = tf.summary.FileWriter(PATH + '/graphs_VOC1/validation', sess.graph)
+            train_summary_writer = tf.summary.FileWriter(PATH + '/graphs/train', sess.graph)
+            validation_summary_writer = tf.summary.FileWriter(PATH + '/graphs/validation', sess.graph)
         else:
-            train_summary_writer = tf.summary.FileWriter(PATH + '/graphs_boat10/train', sess.graph)
-            validation_summary_writer = tf.summary.FileWriter(PATH + '/graphs_boat10/validation', sess.graph)
+            train_summary_writer = tf.summary.FileWriter(PATH + '/graphs/train', sess.graph)
+            validation_summary_writer = tf.summary.FileWriter(PATH + '/graphs/validation', sess.graph)
         # summary_writer = tf.summary.FileWriter('./graphs', sess.graph)
         sess.run(tf.global_variables_initializer())
         # If you want to continue training from check point
