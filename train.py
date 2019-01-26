@@ -154,7 +154,7 @@ with graph.as_default():
         # If you want to continue training from check point
         # checkpoint = "/home/minh/PycharmProjects/yolo3/save_model/SAVER_MODEL_boatM/model.ckpt-" + "1"
         # saver.restore(sess, checkpoint)
-        epochs = 50  #
+        epochs = 500  #
         batch_size = 32  # consider
         best_loss_valid = 10e6
         for epoch in range(epochs):
